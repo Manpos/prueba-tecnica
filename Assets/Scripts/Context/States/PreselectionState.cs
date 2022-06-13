@@ -1,10 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PreselectionState : ActivityState
 {
-    public override void Enter()
+    [SerializeField] float _displayedTitleTime = 2f;
+    public override async void Enter()
     {
+        _context.StatementTitle.AnimationManager.Hidden();
+        _context.StatementAnswers.AnimationManager.Hidden();
+
+        await TitleDisplay();
+        await ButtonsDisplay();
 
         _context.ChangeState(StateType.Selection);
     }
@@ -14,18 +21,23 @@ public class PreselectionState : ActivityState
         
     }
 
-    private void AnimationIn()
+    private async Task TitleDisplay()
     {
+        _context.StatementTitle.AnimationManager.FadeIn();
+        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetCurrentClipLength() * 1000));
 
+        _context.StatementTitle.AnimationManager.Idle();
+        await Task.Delay((int)(_displayedTitleTime * 1000));
+
+        _context.StatementTitle.AnimationManager.FadeOut();
+        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetCurrentClipLength() * 1000));
     }
 
-    private void DisplayDelay()
+    private async Task ButtonsDisplay()
     {
+        _context.StatementAnswers.AnimationManager.FadeIn();
+        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetCurrentClipLength() * 1000));
 
-    }
-
-    private void AnimationOut()
-    {
-
+        _context.StatementAnswers.AnimationManager.Idle();
     }
 }

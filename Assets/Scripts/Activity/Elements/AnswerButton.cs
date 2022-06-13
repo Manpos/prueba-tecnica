@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.Events;
 using System.Threading.Tasks;
 
-public class AnswerButton : MonoBehaviour, IAnimatable
+public class AnswerButton : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _answerDisplay;
     [SerializeField] private Image _background;
@@ -19,20 +19,9 @@ public class AnswerButton : MonoBehaviour, IAnimatable
         IsCorrect = isCorrect;
     }
 
-    public Task Hide()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public Task Show()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void SetBackgroundColor(Color color)
     {
         _background.color = color;
-
     }
 
     public void ResetBackgroundColor()

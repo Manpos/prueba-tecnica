@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5173441911476600256}
   - component: {fileID: 5173441911476600257}
   - component: {fileID: 5173441911476600262}
-  - component: {fileID: 5173441911476600261}
   m_Layer: 5
   m_Name: AnswerButton
   m_TagString: Untagged
@@ -136,18 +135,6 @@ MonoBehaviour:
   _answerDisplay: {fileID: 5173441911562882767}
   _background: {fileID: 5173441911476600256}
   _button: {fileID: 5173441911476600257}
---- !u!225 &5173441911476600261
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5173441911476600259}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &5173441911562882761
 GameObject:
   m_ObjectHideFlags: 0

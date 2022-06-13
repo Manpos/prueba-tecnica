@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 public class PostselectionState : ActivityState
 {
     public override async void Enter()
     {
         await _context.ActivityCorrector.CheckAnswer();
+        await ButtonsDisplay();
         if (_context.ActivityCorrector.CompletedStatement)
         {
             _context.ChangeState(StateType.GenerateStatement);
@@ -21,5 +23,13 @@ public class PostselectionState : ActivityState
         {
             _context.ActivityCorrector.Reset();
         }
+    }
+
+    private async Task ButtonsDisplay()
+    {
+        _context.StatementAnswers.AnimationManager.FadeOut();
+        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetCurrentClipLength() * 1000));
+
+        _context.StatementAnswers.AnimationManager.Hidden();
     }
 }
