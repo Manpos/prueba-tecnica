@@ -1,17 +1,21 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
-public static class Animations
+public class Animations
 {
-    public static IEnumerator FadeCanvas(CanvasGroup canvas, bool fadeIn, float duration)
+    public async Task FadeCanvas(CanvasGroup canvas, bool fadeIn, float duration)
     {
         float fadeValue = fadeIn ? 1f : 0f;
+        float time = 0;
 
         while (canvas.alpha != fadeValue)
         {
-            Mathf.Lerp(canvas.alpha, fadeValue, duration);
+            canvas.alpha = Mathf.Lerp(canvas.alpha, fadeValue, time);
+            time += Time.deltaTime / duration;
         }
 
-        yield return null;
+        await Task.Delay((int)(duration * 1000));
     }
 }
