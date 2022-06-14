@@ -28,7 +28,7 @@ public class PostselectionState : ActivityState
     private async Task ButtonsDisplay()
     {
         _context.StatementAnswers.AnimationManager.FadeOut();
-        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetCurrentClipLength() * 1000));
+        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetFadeDuration() * 1000));
 
         _context.StatementAnswers.AnimationManager.Hidden();
     }

@@ -24,19 +24,19 @@ public class PreselectionState : ActivityState
     private async Task TitleDisplay()
     {
         _context.StatementTitle.AnimationManager.FadeIn();
-        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetCurrentClipLength() * 1000));
+        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetFadeDuration() * 1000));
 
         _context.StatementTitle.AnimationManager.Idle();
         await Task.Delay((int)(_displayedTitleTime * 1000));
 
         _context.StatementTitle.AnimationManager.FadeOut();
-        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetCurrentClipLength() * 1000));
+        await Task.Delay((int)(_context.StatementTitle.AnimationManager.GetFadeDuration() * 1000));
     }
 
     private async Task ButtonsDisplay()
     {
         _context.StatementAnswers.AnimationManager.FadeIn();
-        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetCurrentClipLength() * 1000));
+        await Task.Delay((int)(_context.StatementAnswers.AnimationManager.GetFadeDuration() * 1000));
 
         _context.StatementAnswers.AnimationManager.Idle();
     }

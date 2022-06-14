@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 public class AnimationManager : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class AnimationManager : MonoBehaviour
     private readonly int hidden = Animator.StringToHash("Hidden");
 
     [SerializeField] private Animator _animator;
+    [SerializeField] private float _fadeDuration = 2f;
 
     public void Idle()
     {
@@ -23,16 +23,18 @@ public class AnimationManager : MonoBehaviour
 
     public void FadeIn()
     {
+        _animator.speed = 1f / _fadeDuration;
         _animator.Play(fadeIn);
     }
 
     public void FadeOut()
     {
+        _animator.speed = 1f / _fadeDuration;
         _animator.Play(fadeOut);
     }
 
-    public float GetCurrentClipLength()
+    public float GetFadeDuration()
     {
-        return _animator.GetCurrentAnimatorClipInfo(0).Length;
+        return _fadeDuration;
     }
 }

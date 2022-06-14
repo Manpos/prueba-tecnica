@@ -42,9 +42,10 @@ public class ActivityCorrector : MonoBehaviour
         }
     }
 
-    public void SetButtons(List<AnswerButton> answerButtons)
+    public void SetAnswersSettings(List<AnswerButton> answerButtons, int checks)
     {
         _possibleAnswers = answerButtons;
+        _checks = checks;
     }
 
     public void Reset()

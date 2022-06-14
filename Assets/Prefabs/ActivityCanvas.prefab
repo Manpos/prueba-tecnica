@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8072072546714675742}
+  _fadeDuration: 2
 --- !u!114 &2672266165898477930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,13 +329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activityCorrector: {fileID: 709929559999177682}
   _inputManager: {fileID: 0}
-  _statements:
-  - {fileID: 11400000, guid: 04ae70cf9509d9247bfcc19831da7f66, type: 2}
-  - {fileID: 11400000, guid: 4a23e1cb85456524cb69957c4b9ad8c0, type: 2}
-  - {fileID: 11400000, guid: 94b4c9b9ca9c92c45b9562830f4fe25d, type: 2}
-  - {fileID: 11400000, guid: 406970e51ee83474b8dc0bd2628d4a31, type: 2}
-  _statementTitle: {fileID: 0}
-  _statementAnswers: {fileID: 0}
+  _statementTitle: {fileID: 709929560351561509}
+  _statementAnswers: {fileID: 2672266165898477930}
 --- !u!114 &709929559999177682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,3 +554,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6391608788236037084}
+  _fadeDuration: 2
