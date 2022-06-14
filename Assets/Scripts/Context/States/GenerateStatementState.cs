@@ -1,14 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Activity State where the statement is generated
+/// </summary>
 public class GenerateStatementState : ActivityState
 {
+    #region private members
+
     [SerializeField] private StatementConfigurator _statementConfigurator;
     [SerializeField] private ButtonsConfigurator _buttonsConfigurator;
     [SerializeField] private StatementsDictionary _statementsDictionary = null;
 
     private Statement _currentStatement = null;
+
+    #endregion
+
+    #region public methods
 
     public override void Enter()
     {
@@ -22,6 +29,13 @@ public class GenerateStatementState : ActivityState
         _currentStatement = null;
     }
 
+    #endregion
+
+    #region private methods
+
+    /// <summary>
+    /// Configures the Activity for the current Statement
+    /// </summary>
     private void ConfigurateStatement()
     {
         _statementConfigurator.Generate(_currentStatement);
@@ -29,6 +43,10 @@ public class GenerateStatementState : ActivityState
         _context.ActivityCorrector.SetAnswersSettings(_buttonsConfigurator.AnswerButtons, _currentStatement.Retries);
     }
 
+    /// <summary>
+    /// Changes state to PostSelection, where the result is checked, used as buttons callback
+    /// </summary>
+    /// <param name="pressedButton"> Pressed button </param>
     private void ChangeToPostSelection(AnswerButton pressedButton)
     {
         _context.ActivityCorrector.RegisterAnswer(pressedButton);
@@ -36,11 +54,12 @@ public class GenerateStatementState : ActivityState
     }
 
     /// <summary>
-    /// 
+    /// Gets a new statement from the StatementsDictionary
     /// </summary>
-    /// <returns></returns>
-    private Statement SetNewStatement()
+    private void SetNewStatement()
     {
-        return _currentStatement = _statementsDictionary.GetRandomStatement();
+        _currentStatement = _statementsDictionary.GetRandomStatement();
     }
+
+    #endregion
 }
